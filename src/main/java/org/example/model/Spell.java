@@ -11,10 +11,12 @@ public class Spell {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String type;
     private String effect;
 
+    // Constructores
     public Spell() {}
 
     public Spell(String name, String type, String effect) {
@@ -23,8 +25,13 @@ public class Spell {
         this.effect = effect;
     }
 
+    // Getters y Setters
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

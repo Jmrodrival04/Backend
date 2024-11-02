@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.model.AuditLog;
 import org.example.service.AuditService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,10 @@ public class AuditLogController {
         this.auditService = auditService;
     }
 
+    // Método para obtener los registros de auditoría y mostrar la página de auditoría
     @GetMapping("/audit")
-    public String auditLog(Model model) {
+    public String getAuditLogs(Model model) {
         model.addAttribute("auditLogs", auditService.getAuditLogs());
-        return "audit-log"; // Apunta al archivo audit-log.html en templates
+        return "audit-log"; // Nombre del archivo HTML (audit-log.html)
     }
 }

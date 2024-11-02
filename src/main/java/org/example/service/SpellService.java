@@ -2,7 +2,6 @@ package org.example.service;
 
 import org.example.model.Spell;
 import org.example.repos.SpellRepository;
-import org.example.util.Auditable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +21,12 @@ public class SpellService {
         return spellRepository.findAll();
     }
 
-    @Auditable("Agregar nuevo hechizo")
-    public Spell addSpell(Spell spell) {
-        return spellRepository.save(spell);
+    public void addSpell(Spell spell) {
+        spellRepository.save(spell);
     }
 
-    @Auditable("Eliminar hechizo")
     public void deleteSpell(Long id) {
         spellRepository.deleteById(id);
     }
 }
+

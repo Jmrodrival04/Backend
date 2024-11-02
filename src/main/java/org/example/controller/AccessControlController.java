@@ -1,12 +1,16 @@
 package org.example.controller;
 
+import org.example.model.User;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.List;
+
+@RestController
 public class AccessControlController {
 
     private final UserService userService;
@@ -17,8 +21,12 @@ public class AccessControlController {
     }
 
     @GetMapping("/users")
-    public String accessControl(Model model) {
-        model.addAttribute("users", userService.getAllUsers());
-        return "access-control"; // Apunta al archivo access-control.html en templates
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @PostMapping("/users")
+    public User addUser(@RequestBody User user) {
+        return userService.addUser(user);
     }
 }
